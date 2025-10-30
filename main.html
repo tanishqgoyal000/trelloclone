@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>trello kinda clone lol</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- nav bar thing -->
+    <header class="navbar">
+        <div class="logo">Trello</div>
+        <ul class="nav-links">
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Solutions</a></li>
+            <li><a href="#">Plans</a></li>
+            <li><a href="#">Pricing</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </header>
+
+    <!-- mobile nav that pops -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Solutions</a></li>
+            <li><a href="#">Plans</a></li>
+            <li><a href="#">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <!-- big hero section -->
+    <section class="mainHero">
+        <div class="textPart">
+            <h1>Trello helps teams move work forward</h1>
+            <p>Collaborate, manage projects, and reach new productivity peaks.
+            From high rises to home offices, the way your team works is unique—accomplish it all with Trello.</p>
+            <button class="startBtn">Get Started</button>
+        </div>
+        <div class="picPart">
+            <img src="https://library.bits-pilani.ac.in/bhg/back/backend-media/posts.FrontPage.cover_image/18513842_473711082980394_5567665663146721280_n.webp" alt="trello side pic">
+        </div>
+    </section>
+
+    <!-- extra part for brownie (a simple fake slider kinda) -->
+    <section class="carouselThing">
+        <h2>What teams say</h2>
+        <div class="slider" id="slider">
+            <div class="slide one">“Trello keeps my projects on track and my brain less messy.”</div>
+            <div class="slide two">“Super easy to use and helps with team stuff!”</div>
+            <div class="slide three">“We love the boards and cards, really clean UI.”</div>
+        </div>
+        <button class="prev" id="prevBtn">⟵</button>
+        <button class="next" id="nextBtn">⟶</button>
+    </section>
+
+    <!-- footer thing -->
+    <footer class="footy">
+        <p>© 2025 Not Trello, just for fun 😅</p>
+    </footer>
+
+    <script>
+        // hamburger thing
+        var ham = document.getElementById("hamburger");
+        var mobmenu = document.getElementById("mobileMenu");
+        ham.addEventListener("click", function(){
+            mobmenu.classList.toggle("show");
+            ham.classList.toggle("activeHam");
+        });
+
+        // slider thing (brownie)
+        var slides = document.querySelectorAll(".slide");
+        var now = 0;
+        var nxt = document.getElementById("nextBtn");
+        var prev = document.getElementById("prevBtn");
+
+        function showSlide(i){
+            slides.forEach(function(s){ s.style.display="none"; });
+            slides[i].style.display="block";
+        }
+        showSlide(now);
+
+        nxt.onclick=function(){
+            now++;
+            if(now>slides.length-1){now=0;}
+            showSlide(now);
+        }
+        prev.onclick=function(){
+            now--;
+            if(now<0){now=slides.length-1;}
+            showSlide(now);
+        }
+    </script>
+
+</body>
+</html>
